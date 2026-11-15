@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* ===== Design tokens: Modern Floral / Luxury Flower Shop ===== */
+:root {
+  --rose: #d98c9a; /* Primary: Dusty Rose */
+  --rose-dark: #c4707f;
+  --rose-soft: #f6e3e7;
+  --cream: #fff8f0; /* Secondary: Cream */
+  --sage: #8a9a82; /* Accent: Sage Green */
+  --sage-dark: #6f8068;
+  --brown: #443b38; /* Text: Dark Brown */
+
+  /* shadcn/ui semantic tokens */
+  --background: #ffffff;
+  --foreground: var(--brown);
+  --card: #ffffff;
+  --card-foreground: var(--brown);
+  --popover: #ffffff;
+  --popover-foreground: var(--brown);
+  --primary: var(--rose);
+  --primary-foreground: #ffffff;
+  --secondary: var(--cream);
+  --secondary-foreground: var(--brown);
+  --muted: #f7f1ea;
+  --muted-foreground: #8b807b;
+  --accent: var(--sage);
+  --accent-foreground: #ffffff;
+  --destructive: #c0392b;
+  --border: #eadfd6;
+  --input: #eadfd6;
+  --ring: var(--rose);
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-rose: var(--rose);
+  --color-rose-dark: var(--rose-dark);
+  --color-rose-soft: var(--rose-soft);
+  --color-cream: var(--cream);
+  --color-sage: var(--sage);
+  --color-sage-dark: var(--sage-dark);
+  --color-brown: var(--brown);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-display), ui-serif, Georgia, serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* chừa chỗ cho header sticky khi nhảy anchor */
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--cream);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    overflow-x: clip; /* chặn tràn ngang trên mobile */
+  }
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
