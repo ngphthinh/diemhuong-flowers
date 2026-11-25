@@ -171,3 +171,16 @@ export async function getFilterOptions(): Promise<FilterOptions> {
     maxPrice: top?.price ?? 0,
   };
 }
+
+/** Danh sách slug + ngày cập nhật cho sitemap (chỉ sản phẩm guest nhìn thấy được). */
+export async function listSitemapProducts(): Promise<
+  { slug: string; updatedAt: Date }[]
+> {
+  await connectDB();
+  const cats = await activeCategoryMap();
+  const docs = await Product.find(baseFilter(cats))
+    .select("slug updatedAt")
+    .sort({ updatedAt: -1 })
+    .lean();
+  return docs.map((d) => ({ slug: d.slug, updatedAt: d.updatedAt }));
+}
